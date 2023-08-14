@@ -13,6 +13,25 @@ class UserController extends Controller
         return view(view: 'register');
     }
 
+    public function showLogin(){
+        return view(view: 'login');
+    }
+
+    public function login(Request $request){
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if(Auth::attempt($credentials)){
+            $request->session()->regenerate();
+
+            return redirect()->intended('profile');
+        }
+
+        return back();
+    }
+
     public function register(Request $request){
         $user = User::query()->create([
             'name' => $request['name'],
@@ -23,6 +42,11 @@ class UserController extends Controller
         Auth::login($user);
 
         return redirect()->route(route: 'profile');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
     }
 
     public function profile(){
