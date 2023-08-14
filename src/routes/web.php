@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/register',[\App\Http\Controllers\UserController::class,'showRegister']);
 Route::post('/register',[\App\Http\Controllers\UserController::class,'register']);
 
-Route::get('/login',[\App\Http\Controllers\UserController::class,'showLogin']);
+Route::get('/login',[\App\Http\Controllers\UserController::class,'showLogin'])->name('login');
 Route::post('/login',[\App\Http\Controllers\UserController::class,'login']);
 
 Route::middleware('auth')->group(function (){
