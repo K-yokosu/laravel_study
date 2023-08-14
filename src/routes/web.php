@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/register',[\App\Http\Controllers\UserController::class,'showRegister']);
+Route::get('/register',[\App\Http\Controllers\UserController::class,'showRegister'])->name('register');
 Route::post('/register',[\App\Http\Controllers\UserController::class,'register']);
 
 Route::get('/login',[\App\Http\Controllers\UserController::class,'showLogin'])->name('login');
