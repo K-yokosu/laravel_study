@@ -8,13 +8,19 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
+
     public function showTasks(){
-        return view(view: 'task');
+        $user_id = Auth::id();
+        $tasks = Task::where('user_id', $user_id)->get();
+        // dd($user_id);
+
+        return view('task', compact('tasks'));
     }
 
     public function taskRegister(Request $request){
+        $user_id = Auth::id();
         $task = Task::query()->create([
-            'user_id' => $id = Auth::id(),
+            'user_id' => $user_id,
             'content' => $request['content'],
         ]);
 
