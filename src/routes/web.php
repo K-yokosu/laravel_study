@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function (){
     Route::post('/task/register',[\App\Http\Controllers\TaskController::class,'taskRegister'])->name('task.register');
     Route::get('/csv-download', [\App\Http\Controllers\UserController::class, 'download']);
     Route::post('logout',[\App\Http\Controllers\UserController::class,'logout'])->name('user.logout');
+    Route::post('/send',[\App\Http\Controllers\MailSendController::class,'send']);
 });
 
 Route::get('/', function () {

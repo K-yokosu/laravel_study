@@ -17,5 +17,11 @@
     
     <a href="/task">taskへ</a>
     <a href="/csv_download">csv</a>
+    <a href="/send">メール送信</a>
+
+    <form action="/send" method="post">
+        @csrf
+        <button>メール送信</button>
+    </form>
 </body>
 </html>
